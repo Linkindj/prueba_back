@@ -1,0 +1,14 @@
+@Service
+public class CitaService {
+
+    @Autowired
+    private CitaRepository citaRepository;
+
+    public Cita crearCita(Cita cita) {
+        return citaRepository.save(cita);
+    }
+
+    public List<Cita> obtenerCitas() {
+        return citaRepository.findAll();
+    }
+}

@@ -1,3 +1,5 @@
+package com.pruebaBack.demo.model;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
@@ -13,10 +15,9 @@ public class Cita {
     private LocalDateTime fecha;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "usuario_id", nullable = false)  // Referencia al usuario
+    @JoinColumn(name = "usuario_id", nullable = false)  
     private Usuario usuario;
 
-    // Getters y Setters
     public Long getId() {
         return id;
     }

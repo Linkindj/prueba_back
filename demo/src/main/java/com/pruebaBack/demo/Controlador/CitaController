@@ -1,0 +1,17 @@
+@RestController
+@RequestMapping("/citas")
+public class CitaController {
+
+    @Autowired
+    private CitaService citaService;
+
+    @PostMapping
+    public ResponseEntity<Cita> crearCita(@RequestBody Cita cita) {
+        return ResponseEntity.ok(citaService.crearCita(cita));
+    }
+
+    @GetMapping
+    public List<Cita> obtenerCitas() {
+        return citaService.obtenerCitas();
+    }
+}

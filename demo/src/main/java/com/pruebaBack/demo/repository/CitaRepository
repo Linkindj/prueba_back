@@ -1,0 +1,4 @@
+@Repository
+public interface CitaRepository extends JpaRepository<Cita, Long> {
+
+}

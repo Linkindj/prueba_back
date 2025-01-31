@@ -8,7 +8,7 @@ import java.util.List;
 public class Usuario {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY) // Autoincremental
+    @GeneratedValue(strategy = GenerationType.IDENTITY) 
     private Long id;
 
     @Column(name = "nombre", nullable = false)
@@ -17,11 +17,11 @@ public class Usuario {
     @Column(name = "email", unique = true, nullable = false)
     private String email;
 
-    // Relación con la entidad Cita (un usuario puede tener muchas citas)
+
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Cita> citas;
 
-    // Getters y Setters
+
     public Long getId() {
         return id;
     }
