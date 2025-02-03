@@ -6,7 +6,8 @@ Springboot se utilizaron las siguientes dependencias
 - model: En esta carpeta se encuentran las clases que representan las entidades de la base de datos (por ejemplo, Usuario y Cita).
 - servicio: Se maneja la lógica de negocio para manipular las entidades para ser dirigidos a los controladores donde a su vez hay una interacción.
 con los repositorios para manipular las bases de datos.
--controlador: El controlador se encargar de manejar las solucitudes enviadas, en este caso para realizar consultas.
+-controlador: El controlador se encargar de manejar las solicitudes enviadas, en este caso para realizar consultas.
 -repository: El repositorio es la interfaz que se encargara de realizar operaciones CRUD en las entidades.
 application.properties = Este archivo permite la configuración de la base de datos para su conexión. Las entidades se crean como clases Java, utilizando anotaciones de JPA (@Entity, @Id, etc.). A continuación, las clases Usuario y Cita. 
-Se utilizan anotaciones como @OneToMany con Cita, indicando una relación. basicamente indica que arias citas pueden estar asociadas a un solo usuario.
+Se utilizan anotaciones como @OneToMany con Cita, indicando una relación. básicamente indica que varias citas pueden estar asociadas a un solo usuario. Al ejecutar la aplicación estas peticiones se hace bajo el formato de JSON desde una API,
+para este caso utilicé POSTMAN para realizar las solicitudes hacia el servidor local.
