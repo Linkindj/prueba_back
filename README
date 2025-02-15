@@ -3,10 +3,10 @@ Springboot se utilizaron las siguientes dependencias
 *Spring web = para generar una estructura para aplicación web 
 *MySQL driver = driver para conexión de base de datos MySQL 
 *Spring Data JPA = para la persistencia de datos SQL ) 
-- model: En esta carpeta se encuentran las clases que representan las entidades de la base de datos (por ejemplo, Usuario y Cita).
+- model: En esta carpeta se encuentran las clases que representan las entidades de la base de datos (por ejemplo, Curso y Docente).
 - servicio: Se maneja la lógica de negocio para manipular las entidades para ser dirigidos a los controladores donde a su vez hay una interacción.
 con los repositorios para manipular las bases de datos.
 -controlador: El controlador se encargar de manejar las solucitudes enviadas, en este caso para realizar consultas.
 -repository: El repositorio es la interfaz que se encargara de realizar operaciones CRUD en las entidades.
 application.properties = Este archivo permite la configuración de la base de datos para su conexión. Las entidades se crean como clases Java, utilizando anotaciones de JPA (@Entity, @Id, etc.). A continuación, las clases Usuario y Cita. 
-Se utilizan anotaciones como @OneToMany con Cita, indicando una relación. basicamente indica que arias citas pueden estar asociadas a un solo usuario.
+Se utilizan anotaciones como @OneToMany con docente, indicando una relación. basicamente indica que varios cursos pueden estar asociadas a un solo docente.
