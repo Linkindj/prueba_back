@@ -1,7 +1,9 @@
 package com.pruebaBack.demo.model;
 
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.*;
-import java.util.List;
 
 @Entity
 @Table(name = "cursos")
@@ -26,8 +28,10 @@ public class Curso {
     @Column(name = "fecha", nullable = false)
     private String fecha;
 
-    @OneToMany(mappedBy = "curso", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Docente> docentes;
+    @ManyToOne(fetch = FetchType.EAGER) // Cambiar de LAZY a EAGER
+    @JoinColumn(name = "docente_id")
+    @JsonIgnoreProperties("cursos") // Para evitar recursión infinita
+    private Docente docentes;
 
     public Long getId() {
         return id;
@@ -77,11 +81,11 @@ public class Curso {
         this.fecha = fecha;
     }
 
-    public List<Docente> getDocentes() {
+    public Docente getDocentes() {
         return docentes;
     }
 
-    public void setDocentes(List<Docente> docentes) {
+    public void setDocentes(Docente docentes) {
         this.docentes = docentes;
     }
 }

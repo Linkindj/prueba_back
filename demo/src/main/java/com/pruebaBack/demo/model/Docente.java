@@ -1,5 +1,7 @@
 package com.pruebaBack.demo.model;
 
+import java.util.List;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -19,9 +21,10 @@ public class Docente {
     @Column(name = "correo", nullable = false, unique = true)
     private String correo;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "curso_id", nullable = false)  
-    private Curso curso;
+   
+    @OneToMany(mappedBy = "docentes", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Curso> cursos;
+
 
     public Long getId() {
         return id;
@@ -54,12 +57,12 @@ public class Docente {
     public void setCorreo(String correo) {
         this.correo = correo;
     }
-
-    public Curso getCurso() {
-        return curso;
+    public List<Curso> getCursos() {
+        return cursos;
     }
 
-    public void setCurso(Curso curso) {
-        this.curso = curso;
+    public void setCursos(List<Curso> cursos) {
+        this.cursos = cursos;
     }
 }
+

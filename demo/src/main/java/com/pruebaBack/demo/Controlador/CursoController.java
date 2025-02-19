@@ -4,12 +4,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.GetMapping;
+
 import com.pruebaBack.demo.servicio.CursoService; 
 import com.pruebaBack.demo.model.Curso;
+import com.pruebaBack.demo.repository.CursoRepository;
 
 @RestController
+@CrossOrigin(origins = "*")
 @RequestMapping("/cursos")
 public class CursoController {
 
@@ -24,5 +25,18 @@ public class CursoController {
     @GetMapping
     public List<Curso> obtenercursos() {
         return cursoService.obtenercursos();
+    }
+    
+     private final CursoRepository cursoRepository;
+
+    public CursoController(CursoRepository cursoRepository) {
+        this.cursoRepository = cursoRepository;
+    }
+    @GetMapping("/filtrar")
+    public List<Curso> filtrarCursos(
+            @RequestParam(required = false) String curso,
+            @RequestParam(required = false) Double precio,
+            @RequestParam(required = false) Integer duracion) {
+        return cursoRepository.filtrarCursos(curso, precio, duracion);
     }
 }
