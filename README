@@ -9,4 +9,9 @@ con los repositorios para manipular las bases de datos.
 -controlador: El controlador se encargar de manejar las solucitudes enviadas, en este caso para realizar consultas.
 -repository: El repositorio es la interfaz que se encargara de realizar operaciones CRUD en las entidades.
 application.properties = Este archivo permite la configuración de la base de datos para su conexión. Las entidades se crean como clases Java, utilizando anotaciones de JPA (@Entity, @Id, etc.). A continuación, las clases Usuario y Cita. 
-Se utilizan anotaciones como @OneToMany con docente, indicando una relación. basicamente indica que varios cursos pueden estar asociadas a un solo docente.
+Se utilizan anotaciones como @OneToMany en la clase Docente, indicando una relación de uno a muchos y @ManyToOne de muchos a uno, indicando que muchos cursos pueden estar asociados a un solo docente.
+Para al realización de los filtros de busqueda se tomaron los atributos de nombre de curso, precio y duración.
+Al realizar la ejecución del archivo se utiliza PostMan como frontEnd donde harán las solicitudes al servidor. En este caso el mapping es realizado en "/docentes" con lo podemos hacer la solicitudes POST para agregar docentes y GET para traer los docentes.
+Al realizar la solicitudes "/cursos"  haremos lo mismo con el POST y el GET. sin embargo al realizar los filtros se harán el la URL con los atributos. Ejemplo 
+"http://localhost:8080/cursos/filtrar?curso=Desarrollo&precio=3000000&duracion=12" y nos traera el registro que cumpla con las caracteristica, curso en la consulta "%cursos%" que tenga relación en sus caracteres, mientras que precio <= busca el precio menor o igual y
+duracion => busca en la tabla curso en el atributo duración los atributos mayores o iguales.
